@@ -24,14 +24,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import java.util.Locale
 
-data class LocationInfo(
-    val latitude: Double,
-    val longitude: Double,
-    val accuracy: Float,
-    val city: String?,
-    val state: String?,
-    val country: String?
-)
+
 
 class LocationRepository(private val context: Context) {
 
@@ -39,7 +32,7 @@ class LocationRepository(private val context: Context) {
 
     private val locationRequest = LocationRequest.Builder(
         Priority.PRIORITY_HIGH_ACCURACY,
-        50_000L // intervalo em ms
+        5_000L // intervalo em ms
     ).apply {
         setMinUpdateDistanceMeters(10f) // só atualiza se mover 10m
         setGranularity(Granularity.GRANULARITY_PERMISSION_LEVEL)
